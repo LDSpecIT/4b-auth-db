@@ -7,6 +7,9 @@ const connectToMongoDB = require('./database/connectToMongoDB')
 app.use(express.json())
 app.use(logger('dev'))
 
+const usersRouter = require('../4b-auth-db/Routes/usersRouter')
+app.use('/api/v1/users', usersRouter)
+
 
 const PORT = 3000;
 
