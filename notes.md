@@ -16,3 +16,14 @@ setting up a GitHub Repo
     - git config --global user.email "souza.lucianop@gmail.com"
     - git remote set-url origin "CORRECT URL"
     - git status
+
+
+Setting up Render
+
+New Web Service
+
+1. Use git Repo of choice
+2. Change "yarn" to "npm install"
+3. start command is "node index.js"
+4. Region should match region on db(Mongo Atlas Cluster)
+5. 

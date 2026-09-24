@@ -77,9 +77,20 @@ module.exports = {  createUser, listUsers, login }
 
 /*
 
+const loginCheck = async (req,res) => {
+
+    // find a use that exists with the Model.findOne()
+        //findOne takes object key and value pairs
+    
+    // use bcrypt.compare to ensure that request contains the correct user and user password
+        // create a failed login message if request do not match data
 
 
+    }
 
+const salt = bcrypt.genSalt() // create the salt variable function
+bcrypt.hash( req.body.password , salt) //Salt and hash password request
+bcrypt.compare(req.body.password, foundUser.password ) //Login
 
 
 
