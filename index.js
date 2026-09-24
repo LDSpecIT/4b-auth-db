@@ -7,7 +7,7 @@ const connectToMongoDB = require('./database/connectToMongoDB')
 app.use(express.json())
 app.use(logger('dev'))
 
-const usersRouter = require('../Routes/usersRouter')
+const usersRouter = require('./Routes/usersRouter')
 app.use('/api/v1/users', usersRouter)
 
 
