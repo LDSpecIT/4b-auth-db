@@ -34,6 +34,7 @@ const createUser = async (req,res) => {
     }
 }
 
+//  GET all users - List all users
 
 const listUsers = async (req,res) => {
     try {
@@ -45,5 +46,42 @@ const listUsers = async (req,res) => {
 }
 
 
+//  Set up a user login with a POST request 
 
-module.exports = {  createUser, listUsers }
+const login = async (req,res) => {
+    try {
+        //  verify that users exist
+        const foundUser  = await User.findOne({
+            username: req.body.username
+        })
+        if(!foundUser){
+            return res.status(404).json({ message: "Could not find user. Please sign up or try again"})
+        }
+        const isCorrectPassword = await bcrypt.compare(
+            req.body.password,
+            foundUser.password
+        )
+
+        if(!isCorrectPassword){
+            return res.status(401).json({ message: "Login Failed, username or password is incorrect. Please try again"})
+        } else{
+            return res.status(201).json({ message: "Login Successfull" })
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+
+module.exports = {  createUser, listUsers, login }
+
+/*
+
+
+
+
+
+
+
+
+*/
